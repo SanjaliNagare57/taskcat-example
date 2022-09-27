@@ -5,7 +5,7 @@ Parameters:
   GitHubUser:
     Type: String
     Description: GitHub User
-    Default: "PaulDuvall"
+    Default: "SanjaliNagare57"
   GitHubRepo:
     Type: String
     Description: GitHub Repo to pull from. Only the Name. not the URL
@@ -13,11 +13,11 @@ Parameters:
   GitHubBranch:
     Type: String
     Description: GitHub Branch
-    Default: "master"
+    Default: "main"
   GitHubToken:
     NoEcho: true
     Type: String
-    Default: '{{resolve:secretsmanager:github/personal-access-token:SecretString}}'
+    Default: '{{resolve:secretsmanager:github/personal-access-token-1:SecretString}}'
     Description: GitHub Token. Must be defined in AWS Secrets Manager and here https://github.com/settings/tokens
 Metadata:
   AWS::CloudFormation::Interface:
@@ -146,7 +146,7 @@ Resources:
       Source:
         Type: GITHUB
         Location: !Sub https://github.com/${GitHubUser}/${GitHubRepo}.git
-        BuildSpec: buildspec-setup.yml
+        BuildSpec: buildspec.yml
       TimeoutInMinutes: 10
   CodeBuildCleanup:
     Type: AWS::CodeBuild::Project

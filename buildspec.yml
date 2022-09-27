@@ -17,6 +17,7 @@ phases:
       # - taskcat test run --no-delete
       # - taskcat test run -k
       - taskcat test run
+      # - taskcat test run -n -k -t aerospike-single-region
   post_build:
     commands:
       - echo Build completed on `date`
